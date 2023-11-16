@@ -67,6 +67,14 @@ exports.clam = (req, res) => {
   const clam = new Clam({
     name: req.body.name,
     address: JSON.stringify(req.body.address),
+    consistencyScore: req.body.consistencyScore,
+    volumeScore: req.body.volumeScore,
+    tasteScore: req.body.tasteScore,
+    priceScore: req.body.priceScore,
+    price: req.body.price || null,
+    cuisine: req.body.cuisine || null,
+    awardWinning: req.body.awardWinning || null,
+    notes: req.body.notes || null,
   });
   clam.save((err, clam) => {
     if (err) {
