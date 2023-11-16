@@ -8,4 +8,4 @@ const Clam = mongoose.model(
   })
 );
 
-module.exports = User;
+module.exports = Clam;
