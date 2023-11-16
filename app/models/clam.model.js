@@ -5,6 +5,14 @@ const Clam = mongoose.model(
   new mongoose.Schema({
     name: String,
     address: String,
+    consistencyScore: Number,
+    volumeScore: Number,
+    tasteScore: Number,
+    priceScore: Number,
+    price: Number || null,
+    cuisine: String || null,
+    awardWinning: String || null,
+    notes: String || null,
   })
 );
 
