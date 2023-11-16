@@ -62,6 +62,12 @@ exports.signup = (req, res) => {
   });
 };
 
+exports.clam = (req, res) => {
+  res.status(200).send({
+    message: "test",
+  });
+};
+
 exports.signin = (req, res) => {
   User.findOne({
     username: req.body.username,
