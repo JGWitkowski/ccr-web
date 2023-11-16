@@ -63,8 +63,19 @@ exports.signup = (req, res) => {
 };
 
 exports.clam = (req, res) => {
-  res.status(200).send({
-    message: "test",
+  const clam = new Clam({
+    name: req.body.name,
+    address: req.body.address,
+  });
+  clam.save((err, clam) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    } else {
+      res.status(200).send({
+        clam: clam,
+      });
+    }
   });
 };
 

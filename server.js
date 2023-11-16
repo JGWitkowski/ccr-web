@@ -20,7 +20,7 @@ const db = require("./app/models");
 const Role = db.role;
 db.mongoose
   .connect(
-    `mongodb+srv://testnewuser:NightsFrankOcean1@ccreviews.q7sbiq0.mongodb.net/?retryWrites=true&w=majority`,
+    `mongodb+srv://testnewuser:NightsFrankOcean1@ccreviews.q7sbiq0.mongodb.net/clams-db-alpha?retryWrites=true&w=majority`,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
