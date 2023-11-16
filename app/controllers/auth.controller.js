@@ -66,7 +66,7 @@ exports.signup = (req, res) => {
 exports.clam = (req, res) => {
   const clam = new Clam({
     name: req.body.name,
-    address: req.body.address,
+    address: JSON.stringify(req.body.address),
   });
   clam.save((err, clam) => {
     if (err) {
