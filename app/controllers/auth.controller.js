@@ -87,6 +87,15 @@ exports.clam = (req, res) => {
     }
   });
 };
+exports.clamList = (req, res) => {
+  const clams = Clam.find()
+    .then((clams) => {
+      res.status(200).send({ data: clams });
+    })
+    .catch((err) => {
+      res.status(500).send({ message: err });
+    });
+};
 
 exports.signin = (req, res) => {
   // User.findOne({
