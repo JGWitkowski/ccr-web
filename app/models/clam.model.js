@@ -13,6 +13,7 @@ const Clam = mongoose.model(
     cuisine: String || null,
     awardWinning: String || null,
     notes: String || null,
+    totalScore: Number,
   })
 );
 

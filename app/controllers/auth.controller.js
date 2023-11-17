@@ -75,6 +75,7 @@ exports.clam = (req, res) => {
     cuisine: req.body.cuisine || null,
     awardWinning: req.body.awardWinning || null,
     notes: req.body.notes || null,
+    totalScore: req.body.totalScore,
   });
   clam.save((err, clam) => {
     if (err) {
