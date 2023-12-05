@@ -29,4 +29,5 @@ module.exports = function (app) {
 
   app.post("/api/auth/signin", controller.signin);
   app.get("/api/clams-list", controller.clamList);
+  app.get("/api/get-long-lat", controller.getLongLat);
 };

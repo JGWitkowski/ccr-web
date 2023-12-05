@@ -3,6 +3,9 @@ const db = require("../models");
 const User = db.user;
 const Role = db.role;
 const Clam = db.clam;
+const axios = require("axios");
+
+const API_KEY = "AIzaSyAv9_xmZqNEp1dzVjfZYHWOKBs-Mk71pak";
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
@@ -76,7 +79,10 @@ exports.clam = (req, res) => {
     awardWinning: req.body.awardWinning || null,
     notes: req.body.notes || null,
     totalScore: req.body.totalScore,
+    lat: req.body.lat,
+    long: req.body.lng,
   });
+  console.log("lame: ", clam);
   clam.save((err, clam) => {
     if (err) {
       res.status(500).send({ message: err });
@@ -96,6 +102,29 @@ exports.clamList = (req, res) => {
     .catch((err) => {
       res.status(500).send({ message: err });
     });
+};
+exports.getLongLat = (req, res) => {
+  const PLACE_ID = req.query.placeid;
+  const url = `https://maps.googleapis.com/maps/api/place/details/json?placeid=${PLACE_ID}&key=${API_KEY}`;
+  //res.status(200).send({ long: 234234234, lat: 234234 });
+  axios
+    .get(url)
+    .then((response) => {
+      const result = response.data.result;
+      const location = result.geometry.location;
+      res.status(200).send({ lng: location.lng, lat: location.lat });
+    })
+    .catch((error) => {
+      console.error("Error fetching data from Google Places API:", error);
+    });
+
+  // const clams = Clam.find()
+  //   .then((clams) => {
+  //     res.status(200).send({ data: clams });
+  //   })
+  //   .catch((err) => {
+  //     res.status(500).send({ message: err });
+  //   });
 };
 
 exports.signin = (req, res) => {

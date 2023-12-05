@@ -14,6 +14,8 @@ const Clam = mongoose.model(
     awardWinning: String || null,
     notes: String || null,
     totalScore: Number,
+    lat: Number,
+    long: Number,
   })
 );
 
